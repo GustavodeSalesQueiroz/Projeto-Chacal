@@ -1,0 +1,7 @@
+<sript>
+
+    function password() {
+        
+    }
+
+</sript>

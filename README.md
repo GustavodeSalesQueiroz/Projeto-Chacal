@@ -1,2 +1,2 @@
-# Projeto-Chacal
+# Projeto Chacal
 projeto web, e-commerce de chá

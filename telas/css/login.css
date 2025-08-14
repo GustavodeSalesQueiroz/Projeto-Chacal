@@ -3,33 +3,26 @@ body {
   background-image: url('../img/backgroundlogin.png');
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
   background-attachment: fixed;
   margin: 0;
   height: 100vh;
-}   
-
-
-body {
   font-family: Arial, sans-serif;
   background-color: #73c784;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   height: 106vh;
   margin: 0;
-}
-
+}   
 
 .login-container {
   background-color: rgb(143, 219, 150);
-  padding: 40px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 50px;
+  border-radius: 18px;
+  box-shadow: 0 2px 9px rgba(0, 0, 0, 0.568);
   width: 300px;
   padding-left: 90px;
-  justify-content: center;
-  align-items: center;
+  margin: 0 auto;
 }
 
 h1 {
@@ -38,13 +31,17 @@ h1 {
   padding-right: 60px;
 }
 
-p {
+.info {
    text-align: center;
    font-family: Arial, sans-serif;
    font-style: italic;
+   position: auto;
+   font-size: 15px;
+   top: 447pt;
+   left: 509pt;
 }
 
-form {
+.frm {
   display: flex;
   flex-direction: column;
   padding-right: 60px;
@@ -58,8 +55,26 @@ label {
 input {
   padding: 10px;
   margin-bottom: 14px;
-  border: 1px solid #085312;
+  border: 1px solid #088318;
   border-radius: 3px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.cadastro{
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  top: 8pt;
+  left: -138pt;
+  font-family: Arial, sans-serif;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: bold;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -68,17 +83,16 @@ input {
   color: white;
   padding: 10px 20px;
   border: none;
-  border-radius: 3px;
+  border-radius: 5px;
   cursor: pointer;
-  position: absolute;
-  top: 265px;
-  left: 648px;
+  position: relative;
+  top: -25pt;
+  left: -73pt;
   font-family: Arial, sans-serif;
-  text-align: center;
+  text-align: left;
   text-decoration: none;
   display: inline-block;
-  transition: background-color 0.3s ease;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bold;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
@@ -87,12 +101,16 @@ input {
   background-color: #45a049;
 }
 
+.cadastro:hover {
+  background-color: #45a049;
+}
+
 .entrada {
   background-color: #4CAF50;
   color: white;
   padding: 10px 20px;
   border: none;
-  border-radius: 3px;
+  border-radius: 5px;
   cursor: pointer;
   font-family: Arial, sans-serif;
   text-align: center;

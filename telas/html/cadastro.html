@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tela de login</title>
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/cadastro.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../favicon_io/favicon-16x16.png">
     <link rel="manifest" href="../favicon_io/site.webmanifest">
   </head>
   <body>
-    <div class="login-container">
+    <div class="cadastro-container">
       <button class="home" type="button" onclick="window.location.href='Home.html'">Home</button>
-      <button class="cadastro" type="button" onclick="window.location.href='cadastro.html'">Cadastre-se</button>
-      <h1 class="text">Bem-vindo!</h1>
+      <button class="login" type="button" onclick="window.location.href='login.html'">login</button>
+      <h1 class="text">Crie uma conta!</h1>
       <form class="frm" action="/login" method="post">
         <label for="username">Usuário:</label>
         <input type="text" id="username" name="username" required>
@@ -23,8 +23,8 @@
         <label for="password">Senha:</label>
         <input type="password" id="password" name="password" required>
 
-        <button class="entrada" type="submit">Entrar</button>
-        <p class="info">Use o login Administrativo para obter acesso alternativo.</p>
+        <button class="cadastrar" type="submit">Entrar</button>
+        <p class="info">User Padrão.</p>
       </form>
     </div>
     <script src="index.js"></script>

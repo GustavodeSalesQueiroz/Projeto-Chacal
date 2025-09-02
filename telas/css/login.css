@@ -1,6 +1,6 @@
 
 body {
-  background-image: url('../img/backgroundlogin.png');
+  background-image: url('../img/Design\ sem\ nome.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -9,20 +9,30 @@ body {
   font-family: Arial, sans-serif;
   background-color: #73c784;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: 106vh;
-  margin: 0;
 }   
 
 .login-container {
-  background-color: rgb(117, 202, 125);
+  background-color: rgb(124, 139, 80);
+  background: transparent;
   padding: 50px;
   border-radius: 18px;
-  box-shadow: 0 2px 9px rgba(0, 0, 0, 0.568);
+  box-shadow: 0 2px 9px rgb(0, 0, 0);
   width: 300px;
   padding-left: 90px;
-  margin: 0 auto;
+  position: relative;
+  top: 30pt;
+  left: 2pt;
+  height: 300pt;
+}
+
+.login-container h1 {
+  color: white;
+  position: relative;
+  top: -20pt;
+  left: 6pt;
 }
 
 h1 {
@@ -31,6 +41,7 @@ h1 {
   padding-right: 60px;
 }
 
+
 .info {
    text-align: center;
    font-family: Arial, sans-serif;
@@ -38,75 +49,82 @@ h1 {
    position: auto;
    font-size: 15px;
    top: 447pt;
-   left: 509pt;
+   left: 508pt;
 }
 
 .frm {
   display: flex;
   flex-direction: column;
   padding-right: 60px;
+  position: relative;
+  left: 10pt;
 }
 
 label {
-  font-weight: bold;
   margin-bottom: 5px;
+  color: white;
 }
 
 input {
   padding: 10px;
   margin-bottom: 14px;
-  border: 1px solid #088318;
+  border: 1px solid #526e11;
   border-radius: 3px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .cadastro{
-  background-color: #4CAF50;
+  background-color: transparent;
   color: white;
   padding: 10px 12px;
-  border: none;
-  border-radius: 5px;
   cursor: pointer;
   position: relative;
-  top: 8pt;
-  left: -138pt;
+  top: 285pt;
+  left: 20pt;
   font-family: Arial, sans-serif;
   text-decoration: none;
   display: inline-block;
   font-size: 15px;
   font-weight: bold;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .home{
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
+  background-image: url('../img/Design_sem_nome__3_-removebg-preview.png');
+  background-size: 80pt 80pt;
+  background-position: center;
+  background-color: transparent;
+  padding: 26px 23px;
   border: none;
-  border-radius: 5px;
+  border-radius: 18px;
   cursor: pointer;
   position: relative;
-  top: -25pt;
-  left: -73pt;
+  top: -40pt;
+  left: 213pt;
   font-family: Arial, sans-serif;
   text-align: left;
   text-decoration: none;
   display: inline-block;
   font-size: 15px;
   font-weight: bold;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);*/
 }
 
 .home:hover {
-  background-color: #45a049;
+  background-image: url('../img/Design_sem_nome__5_-removebg-preview.png');
+  background-size: 80pt 80pt;
+  background-position: center;
+  background-color: transparent;
+  padding: 26px 23px;
 }
 
 .cadastro:hover {
-  background-color: #45a049;
+  font-style: italic;
+  color: #73c784;
+  text-decoration: underline;
 }
 
 .entrada {
-  background-color: #4CAF50;
+  background-color: #909c48;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -123,5 +141,5 @@ input {
 }
 
 .entrada:hover {
-  background-color: #45a049;
+  background-color: #75a045;
 }

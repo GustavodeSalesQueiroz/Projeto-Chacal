@@ -6,24 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tela de login</title>
     <link rel="stylesheet" href="../css/login.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="../favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="../favicon_io/site.webmanifest">
+     <link rel="shortcut icon" href="images/m8.ico" sizes="192x192"> 
+    <link rel="apple-touch-icon" sizes="180x180" href="/telas/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/telas/favicon_io/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/telas/favicon_io/android-chrome-512x512.png">
+    <link rel="manifest" href="/site.webmanifest">
   </head>
   <body>
+  
     <div class="login-container">
-      <button class="home" type="button" onclick="window.location.href='Home.html'">Home</button>
-      <button class="cadastro" type="button" onclick="window.location.href='cadastro.html'">Cadastre-se</button>
+      <button class="home" type="submit" onclick="window.location.href='Home.html'">   
+      </button>
+      
+      <a class="cadastro" href="cadastro.html">Cadastre-se</a>
       <h1 class="text">Bem-vindo!</h1>
-      <form class="frm" action="/login" method="post">
+      <form class="frm">
         <label for="username">Usuário:</label>
         <input type="text" id="username" name="username" required>
 
         <label for="password">Senha:</label>
-        <input type="password" id="password" name="password" required>
+        <input type="password" id="password" name="password" required onchange=validarSenha()>
 
-        <button class="entrada" type="submit">Entrar</button>
+        <button class="entrada">Entrar</button>
         <p class="info">Use o login Administrativo para obter acesso alternativo.</p>
       </form>
     </div>

@@ -1,0 +1,94 @@
+body {
+    
+    background-color: rgb(119, 134, 83);
+    background-size: cover;
+    background-position: center;
+}
+.container{
+    background-image: url('../img/Imagem\ do\ WhatsApp\ de\ 2025-08-26\ à\(s\)\ 20.20.42_50363751.jpg');
+    padding: 5pt;
+    border-radius: 18px;
+    width: 300pt;
+    padding-left: 90pt;
+    position: relative;
+    top: 65pt;
+    left: 1pt;
+    height: 59pt;
+    padding-left: 989pt;
+}
+
+.container h1{
+    color: rgb(242, 243, 203); 
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 29pt;
+    position: relative;
+    top: -170pt;
+    left: -850pt;
+}
+
+.container .login-button{
+        background-image: url('../img/Design_sem_nome__6_-removebg-preview.png');
+        background-size: 80pt 80pt;
+        background-position: center;
+        background-color: transparent;
+        padding: 26px 23px;
+        border: none;
+        border-radius: 18px;
+        cursor: pointer;
+        position: relative;
+        top: -310pt;
+        left: 100pt;
+        font-family: Arial, sans-serif;
+        text-align: left;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+        font-weight: bold;
+}
+
+.container button:hover{
+    background-color: #677228;
+    cursor: pointer;
+}
+
+.container .compras{
+    text-decoration: none;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15pt;
+    position: relative;
+    top: -242pt;
+    left: -1000pt;
+    background-color: #758b40;
+    padding: 3pt;
+    border-radius: 10pt;
+    box-shadow: 0 2px 9px rgba(0, 0, 0, 0.76);
+    border-color: beige;
+}
+
+.container .logo{
+    width: 100pt;
+    height: 100pt;
+    position: relative;
+    top: -90pt;
+    left: -950pt;
+}
+
+.container .search-bar{
+    width: 200pt;
+    height: 20pt;
+    border-radius: 10pt;
+    border: none;
+    padding: 5pt;
+    font-size: 16pt;
+    position: relative;
+    top: -222pt;
+    left: -500pt;
+}
+
+.container .usuario{
+    color: antiquewhite;
+    position: relative;
+    top: -265pt;
+    left: 150pt;
+}   

@@ -1,7 +1,10 @@
-<sript>
+function validarSenha() {
+    var senha = document.getElementById("password").value;
 
-    function password() {
-        
+    if (senha.length < 8) {
+        alert("A senha deve ter no mínimo 8 caracteres.");
+        return false;
     }
 
-</sript>
+    return true;
+}

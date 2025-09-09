@@ -1,11 +1,13 @@
 body {
     
-    background-color: rgb(119, 134, 83);
+    background-color: rgb(196, 197, 117);
     background-size: cover;
     background-position: center;
 }
 .container{
     background-image: url('../img/Imagem\ do\ WhatsApp\ de\ 2025-08-26\ à\(s\)\ 20.20.42_50363751.jpg');
+    background-size: cover;
+    background-position: center;
     padding: 5pt;
     border-radius: 18px;
     width: 300pt;
@@ -28,7 +30,7 @@ body {
 
 .container .login-button{
         background-image: url('../img/Design_sem_nome__6_-removebg-preview.png');
-        background-size: 80pt 80pt;
+        background-size: 80pt;
         background-position: center;
         background-color: transparent;
         padding: 26px 23px;
@@ -90,5 +92,5 @@ body {
     color: antiquewhite;
     position: relative;
     top: -265pt;
-    left: 150pt;
+    left: 130pt;
 }   

@@ -98,7 +98,7 @@ input {
   border-radius: 18px;
   cursor: pointer;
   position: relative;
-  top: -40pt;
+  top: -35pt;
   left: 213pt;
   font-family: Arial, sans-serif;
   text-align: left;
@@ -106,15 +106,22 @@ input {
   display: inline-block;
   font-size: 15px;
   font-weight: bold;
+  border-style: inset;
   /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);*/
 }
 
 .home:hover {
-  background-image: url('../img/Design_sem_nome__5_-removebg-preview.png');
+  background-image: url('../img/Design_sem_nome__5_-removebg-preview\ -\ Editado.png');
   background-size: 80pt 80pt;
   background-position: center;
   background-color: transparent;
   padding: 26px 23px;
+}
+
+.home:active {
+  
+  padding: 26px 23px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .cadastro:hover {
@@ -142,4 +149,81 @@ input {
 
 .entrada:hover {
   background-color: #75a045;
+}
+
+.entrada:active {
+  background-color: #5c7a34;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.visualizar{
+  background-image: url('../img/Design_sem_nome__9_-removebg-preview.png');
+  background-size: 35pt;
+  background-position: center;
+  background-color: transparent;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  left: 112pt;
+  top: -255pt;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  font-weight: bold;
+  size: 10pt;
+  width: 35pt;
+  height: 35pt;
+}
+
+
+.visualizar:active { 
+  background-image: url('../img/Design_sem_nome__10_-removebg-preview.png');
+  background-size: 35pt;
+  background-position: center;
+  background-color: transparent;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  left: 112pt;
+  top: -259pt;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  font-weight: bold;
+  size: 10pt;
+  width: 35pt;
+  height: 35pt;
+}
+
+
+@media (max-width: 600px) {
+  .login-container {
+    width: 90%;
+    padding: 20px;
+    top: 20pt;
+    left: 500pt;
+  }
+
+  .frm {
+    padding-right: 0;
+    left: 0;
+  }
+
+  .cadastro {
+    top: 250pt;
+    left: 0;
+  }
+
+  .home {
+    top: -20pt;
+    left: 150pt;
+  }
 }

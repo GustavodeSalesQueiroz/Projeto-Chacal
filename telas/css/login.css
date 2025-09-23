@@ -1,13 +1,16 @@
+h1{
+    color: white;
+}
 
 body {
-  background-image: url('../img/Design\ sem\ nome.jpg');
+  background-image: url('../img/composicao-de-folhas-de-palmeira-verde-3d.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   margin: 0;
   height: 100vh;
   font-family: Arial, sans-serif;
-  background-color: #73c784;
+  background-color: #6e8f2296;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -16,7 +19,7 @@ body {
 
 .login-container {
   background-color: rgb(124, 139, 80);
-  background: transparent;
+  background: rgba(3, 97, 58, 0.664);
   padding: 50px;
   border-radius: 18px;
   box-shadow: 0 2px 9px rgb(0, 0, 0);
@@ -39,6 +42,7 @@ h1 {
   text-align: center;
   margin-bottom: 20px;
   padding-right: 60px;
+  color: white;
 }
 
 
@@ -50,6 +54,7 @@ h1 {
    font-size: 15px;
    top: 447pt;
    left: 508pt;
+   color: white;
 }
 
 .frm {
@@ -94,8 +99,9 @@ input {
   background-position: center;
   background-color: transparent;
   padding: 26px 23px;
-  border: none;
-  border-radius: 18px;
+  border: inset;
+  border-radius: 400pt;
+  border-color: #e5e7dfa8;
   cursor: pointer;
   position: relative;
   top: -35pt;
@@ -106,8 +112,7 @@ input {
   display: inline-block;
   font-size: 15px;
   font-weight: bold;
-  border-style: inset;
-  /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);*/
+  opacity: 60%;
 }
 
 .home:hover {
@@ -115,7 +120,10 @@ input {
   background-size: 80pt 80pt;
   background-position: center;
   background-color: transparent;
+  border-color: #92ad55a8;
+  border-radius: 400pt;
   padding: 26px 23px;
+  cursor: pointer;
 }
 
 .home:active {
@@ -191,7 +199,7 @@ input {
   cursor: pointer;
   position: relative;
   left: 112pt;
-  top: -259pt;
+  top: -255pt;
   font-family: Arial, sans-serif;
   text-align: center;
   text-decoration: none;

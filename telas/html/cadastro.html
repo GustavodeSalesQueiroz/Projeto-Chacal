@@ -18,14 +18,17 @@
       <form class="frm" action="/login" method="post">
         <label for="username">Usuário:</label>
         <input type="text" id="username" name="username" required>
-
         <label for="password">Senha:</label>
-        <input type="password" id="password" name="password" required>
+        <input type="password" id="password" name="password" required
+        onchange=validarSenha()>
 
         <button class="cadastrar" type="submit">Entrar</button>
         <p class="info">Já possui uma conta? <a class="login-link" href="login.html">Faça login aqui</a>.</p>
       </form>
     </div>
-     <script src="/telas/js/index.js"></script>
+      <div>
+        <button class="visualizar" id="visualizar" onclick=togglePasswordVisibility()></button>
+      </div>
+     <script src="/telas/js/login.js"></script>
   </body>
 </html>   

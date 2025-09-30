@@ -26,7 +26,7 @@ body {
   width: 300px;
   padding-left: 90px;
   position: relative;
-  top: 30pt;
+  top: 50pt;
   left: 2pt;
   height: 300pt;
 }
@@ -175,7 +175,7 @@ input {
   cursor: pointer;
   position: relative;
   left: 112pt;
-  top: -255pt;
+  top: -195pt;
   font-family: Arial, sans-serif;
   text-align: center;
   text-decoration: none;
@@ -186,7 +186,6 @@ input {
   width: 35pt;
   height: 35pt;
 }
-
 
 .visualizar:active { 
   background-image: url('../img/Design_sem_nome__10_-removebg-preview.png');
@@ -199,7 +198,7 @@ input {
   cursor: pointer;
   position: relative;
   left: 112pt;
-  top: -255pt;
+  top: -195pt;
   font-family: Arial, sans-serif;
   text-align: center;
   text-decoration: none;
@@ -211,27 +210,3 @@ input {
   height: 35pt;
 }
 
-
-@media (max-width: 600px) {
-  .login-container {
-    width: 90%;
-    padding: 20px;
-    top: 20pt;
-    left: 500pt;
-  }
-
-  .frm {
-    padding-right: 0;
-    left: 0;
-  }
-
-  .cadastro {
-    top: 250pt;
-    left: 0;
-  }
-
-  .home {
-    top: -20pt;
-    left: 150pt;
-  }
-}

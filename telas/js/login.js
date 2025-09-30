@@ -12,12 +12,14 @@ function validarSenha() {
 
 function togglePasswordVisibility() {
     var passwordInput = document.getElementById("password");
-    var eyeIcon = document.getElementById("Design_sem_nome__9_-removebg-preview.png");
+    ("Design_sem_nome__9_-removebg-preview.png");
     if (passwordInput.type === "password") {
         passwordInput.type = "text";
-        eyeIcon.src = "../img/Design_sem_nome__10_-removebg-preview.png"; // Ícone de olho aberto
+        visualizar.src = ("../img/Design_sem_nome__10_-removebg-preview.png");
+        
     } else {
         passwordInput.type = "password";
-        eyeIcon.src = "../img/Design_sem_nome__10_-removebg-preview.png"; // Ícone de olho fechado
+        visualizar.src = ("../img/Design_sem_nome__9_-removebg-preview.png");
+
     }
 }

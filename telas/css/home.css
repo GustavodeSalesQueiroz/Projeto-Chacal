@@ -1,30 +1,23 @@
-@font-face {
-    font-family: 'catchy mager';
-    src: url(/telas/fontes/Catchy\ Mager.otf) format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
+
 
 body {
-    
+
     background-color: #8b9971;
-    background-size: cover;
-    background-position: center;
-}
+    scroll-behavior: smooth;
+    font-family: Arial, sans-serif;
+    }
 .container{
     background-image: url('../img/Design\ sem\ nome\ \(11\).png');
     background-size: cover;
     background-position: center;
-    padding: 5pt;
     border-radius: 18px;
     width: 300pt;
-    position: fixed;
+    position: relative;
     top: 65pt;
     left: 18pt;
-    height: 58pt;
-    padding-left: 960pt;
+    height: 55pt;
+    padding-left: 895pt;
 }
-
 
 .svg-button {
   background: transparent;
@@ -93,7 +86,7 @@ body {
         background-color: transparent;
         padding: 26px 23px;
         border: none;
-        border-radius: 18px;
+        border-radius: 20pt;
         cursor: pointer;
         position: relative;
         top: -310pt;
@@ -102,13 +95,14 @@ body {
         text-align: left;
         text-decoration: none;
         display: inline-block;
-        font-size: 15px;
+        font-size: 50pt;
         font-weight: bold;
 }
 
 .container button:hover{
     background-color: #12140413;
     cursor: pointer;
+    border-radius: 20pt;
 }
 
 

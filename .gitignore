@@ -1,0 +1,25 @@
+# Banco de dados SQLite
+*.db
+*.sqlite
+*.sqlite3
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+logs/
+
+# Cache
+cache/
+tmp/

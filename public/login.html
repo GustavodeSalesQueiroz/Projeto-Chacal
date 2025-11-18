@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Chacal</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--bg-light) 0%, #FFF5E6 100%);
+            padding: 2rem;
+        }
+
+        .auth-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .auth-box h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+        }
+
+        .auth-box .logo {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-submit:disabled {
+            background-color: #CCC;
+            cursor: not-allowed;
+        }
+
+        .auth-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .auth-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .auth-link a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            background-color: #F8D7DA;
+            color: #721C24;
+            padding: 0.75rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .success-message {
+            background-color: #D4EDDA;
+            color: #155724;
+            padding: 0.75rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        .spinner-small {
+            border: 3px solid var(--bg-light);
+            border-top: 3px solid var(--primary-color);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .password-toggle {
+            position: relative;
+        }
+
+        .password-toggle input {
+            padding-right: 2.5rem;
+        }
+
+        .password-toggle button {
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-box">
+            <div class="logo">☕</div>
+            <h1 id="title">Login</h1>
+
+            <div class="error-message" id="errorMessage"></div>
+            <div class="success-message" id="successMessage"></div>
+
+            <form id="authForm">
+                <!-- Campo de Nome (apenas cadastro) -->
+                <div class="form-group" id="nameGroup" style="display: none;">
+                    <label for="name">Nome Completo</label>
+                    <input type="text" id="name" name="name" placeholder="Seu nome completo">
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                </div>
+
+                <!-- Senha -->
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <div class="password-toggle">
+                        <input type="password" id="password" name="password" placeholder="Sua senha" required>
+                        <button type="button" onclick="togglePassword()">👁️</button>
+                    </div>
+                </div>
+
+                <!-- Confirmar Senha (apenas cadastro) -->
+                <div class="form-group" id="confirmPasswordGroup" style="display: none;">
+                    <label for="confirmPassword">Confirmar Senha</label>
+                    <div class="password-toggle">
+                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirme sua senha">
+                        <button type="button" onclick="toggleConfirmPassword()">👁️</button>
+                    </div>
+                </div>
+
+                <div class="loading" id="loading">
+                    <div class="spinner-small"></div>
+                    <span>Aguarde...</span>
+                </div>
+
+                <button type="submit" class="btn-submit" id="submitBtn">Entrar</button>
+            </form>
+
+            <div class="auth-link">
+                <span id="toggleText">Não tem conta? </span>
+                <a href="#" onclick="toggleAuthMode(event)">
+                    <span id="toggleLink">Cadastre-se</span>
+                </a>
+            </div>
+
+            <div class="auth-link" style="margin-top: 1rem;">
+                <a href="/public/index.html">← Voltar para Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let isLoginMode = true;
+
+        function togglePassword() {
+            const input = document.getElementById('password');
+            input.type = input.type === 'password' ? 'text' : 'password';
+        }
+
+        function toggleConfirmPassword() {
+            const input = document.getElementById('confirmPassword');
+            input.type = input.type === 'password' ? 'text' : 'password';
+        }
+
+        function toggleAuthMode(e) {
+            e.preventDefault();
+            isLoginMode = !isLoginMode;
+
+            const title = document.getElementById('title');
+            const nameGroup = document.getElementById('nameGroup');
+            const confirmPasswordGroup = document.getElementById('confirmPasswordGroup');
+            const nameInput = document.getElementById('name');
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+            const submitBtn = document.getElementById('submitBtn');
+            const toggleText = document.getElementById('toggleText');
+            const toggleLink = document.getElementById('toggleLink');
+            const form = document.getElementById('authForm');
+
+            if (isLoginMode) {
+                title.textContent = 'Login';
+                nameGroup.style.display = 'none';
+                confirmPasswordGroup.style.display = 'none';
+                submitBtn.textContent = 'Entrar';
+                toggleText.textContent = 'Não tem conta? ';
+                toggleLink.textContent = 'Cadastre-se';
+                nameInput.removeAttribute('required');
+                confirmPasswordInput.removeAttribute('required');
+            } else {
+                title.textContent = 'Cadastro';
+                nameGroup.style.display = 'block';
+                confirmPasswordGroup.style.display = 'block';
+                submitBtn.textContent = 'Cadastrar';
+                toggleText.textContent = 'Já tem conta? ';
+                toggleLink.textContent = 'Faça login';
+                nameInput.setAttribute('required', 'required');
+                confirmPasswordInput.setAttribute('required', 'required');
+            }
+
+            form.reset();
+            clearMessages();
+        }
+
+        function clearMessages() {
+            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'none';
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+
+        function showSuccess(message) {
+            const successDiv = document.getElementById('successMessage');
+            successDiv.textContent = message;
+            successDiv.style.display = 'block';
+        }
+
+        document.getElementById('authForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            clearMessages();
+            const loading = document.getElementById('loading');
+            const submitBtn = document.getElementById('submitBtn');
+
+            loading.style.display = 'block';
+            submitBtn.disabled = true;
+
+            try {
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const name = document.getElementById('name').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+
+                let action = isLoginMode ? 'login' : 'register';
+                let body = { email, password };
+
+                if (!isLoginMode) {
+                    body.name = name;
+                    body.confirmPassword = confirmPassword;
+                }
+
+                const response = await fetch(`/api/auth.php?action=${action}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(body)
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    showSuccess(data.message);
+                    
+                    // Salvar dados do usuário no localStorage
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    
+                    // Redirecionar após 1.5 segundos
+                    setTimeout(() => {
+                        window.location.href = '/public/index.html';
+                    }, 1500);
+                } else {
+                    showError(data.error || 'Erro ao processar requisição');
+                }
+            } catch (error) {
+                showError('Erro ao conectar com o servidor');
+                console.error(error);
+            } finally {
+                loading.style.display = 'none';
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>

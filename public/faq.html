@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perguntas Frequentes - E-commerce de Chás</title>
+   
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #ffffff;
+            text-decoration: none;
+            position: relative;
+            top: -10px;
+            left: -437pt;
+            margin-bottom: 20px;
+
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f1ed;
+            color: #3d3d3d;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #8B4513 0%, #92735e 99%);
+            color: #ffffff;
+            padding: 60px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .faq-section {
+            margin-bottom: 50px;
+        }
+
+        .faq-section h2 {
+            color: #8B4513;
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #d4a574;
+            display: inline-block;
+        }
+
+        .faq-item {
+            background-color: #ffffff;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(139, 111, 71, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 4px 12px rgba(139, 111, 71, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .faq-question {
+            background-color: #f9f7f4;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 5px solid #8b6f47;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: #f0ebe5;
+        }
+
+        .faq-question h3 {
+            color: #8b6f47;
+            font-size: 1.1em;
+            font-weight: 600;
+            margin: 0;
+            flex: 1;
+        }
+
+        .faq-toggle {
+            color: #8b6f47;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-left: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background-color: #ffffff;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 1000px;
+            padding: 20px;
+        }
+
+        .faq-answer p {
+            margin-bottom: 15px;
+            color: #555555;
+        }
+
+        .faq-answer ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .faq-answer li {
+            margin-bottom: 10px;
+            color: #555555;
+        }
+
+        .faq-answer strong {
+            color: #8b6f47;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #faf8f5;
+        }
+
+        table th {
+            background-color: #8b6f47;
+            color: #ffffff;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        table td {
+            padding: 12px;
+            border-bottom: 1px solid #e8dfd7;
+        }
+
+        table tr:hover {
+            background-color: #f0ebe5;
+        }
+
+        footer {
+            background-color: #8B4513;
+            color: #ffffff;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .contact-info a {
+            color: #d4a574;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #ffffff;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .faq-section h2 {
+                font-size: 1.4em;
+            }
+
+            .faq-question {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .faq-toggle {
+                margin-left: 0;
+                margin-top: 10px;
+                align-self: flex-end;
+            }
+
+            .container {
+                margin: 20px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+                ☕ Chacal
+        </a>
+        <h1>Perguntas Frequentes</h1>
+        <p>Encontre respostas para as dúvidas mais comuns sobre nossos chás e serviços</p>
+    </header>
+
+    <div class="container">
+        <!-- SEÇÃO: Sobre Nossos Chás -->
+        <section class="faq-section">
+            <h2>Sobre Nossos Chás</h2>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Qual a diferença entre chá, infusão e tisana?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>O termo <strong>chá</strong> (ou <em>Camellia sinensis</em>) refere-se estritamente às bebidas preparadas a partir das folhas da planta do chá. Isso inclui os chás verde, preto, branco, oolong e pu-erh. Já <strong>infusão</strong> e <strong>tisana</strong> são termos mais amplos que descrevem bebidas feitas a partir da imersão de frutas, flores, ervas ou especiarias em água quente, como o chá de camomila ou hortelã.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Como devo armazenar meus chás para garantir a máxima frescura?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Para preservar o sabor e o aroma, o chá deve ser armazenado em um recipiente <strong>hermético</strong>, longe da luz, calor, umidade e odores fortes. A cozinha, por ser um local com variações de temperatura e umidade, não é o ideal. Recomendamos um armário fresco e escuro.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Qual a temperatura ideal da água para preparar cada tipo de chá?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>A temperatura da água é crucial para evitar queimar as folhas e extrair o melhor sabor:</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tipo de Chá</th>
+                                <th>Temperatura Recomendada</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Chá Branco e Verde</td>
+                                <td>70°C a 80°C</td>
+                            </tr>
+                            <tr>
+                                <td>Chá Oolong</td>
+                                <td>80°C a 90°C</td>
+                            </tr>
+                            <tr>
+                                <td>Chá Preto e Pu-erh</td>
+                                <td>95°C a 100°C (ponto de fervura)</td>
+                            </tr>
+                            <tr>
+                                <td>Infusões/Tisanas</td>
+                                <td>100°C (ponto de fervura)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Por quanto tempo devo deixar o chá em infusão?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>O tempo de infusão varia de acordo com o tipo de chá e sua preferência pessoal. Como regra geral:</p>
+                    <ul>
+                        <li><strong>Chá Verde e Branco:</strong> 1 a 3 minutos</li>
+                        <li><strong>Chá Oolong:</strong> 3 a 5 minutos</li>
+                        <li><strong>Chá Preto e Pu-erh:</strong> 3 a 5 minutos</li>
+                        <li><strong>Infusões/Tisanas:</strong> 5 a 7 minutos</li>
+                    </ul>
+                    <p>Recomendamos experimentar para encontrar o tempo perfeito para o seu paladar.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: Pedidos e Entrega -->
+        <section class="faq-section">
+            <h2>Pedidos e Entrega</h2>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Quais são as opções de frete e o prazo de entrega?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Oferecemos diversas opções de frete, incluindo PAC, Sedex e transportadoras parceiras. O prazo de entrega e o custo são calculados automaticamente na página do carrinho, após você inserir o seu CEP. O prazo começa a contar a partir da confirmação do pagamento.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Posso rastrear meu pedido?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Sim, com certeza! Assim que seu pedido for despachado, você receberá um e-mail com o código de rastreamento e o link direto para acompanhar a entrega no site da transportadora ou dos Correios.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Qual é a política de troca e devolução?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Prezamos pela sua satisfação. Aceitamos trocas ou devoluções em até <strong>7 dias corridos</strong> após o recebimento do produto, conforme o Código de Defesa do Consumidor, desde que o produto esteja lacrado e em sua embalagem original. Para iniciar o processo, entre em contato com nosso Serviço de Atendimento ao Cliente (SAC).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: Pagamento e Segurança -->
+        <section class="faq-section">
+            <h2>Pagamento e Segurança</h2>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Quais formas de pagamento são aceitas?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Aceitamos as principais bandeiras de cartão de crédito (parcelamento em até 12 vezes sem juros), boleto bancário e PIX. O pagamento via PIX geralmente tem a confirmação mais rápida.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>O site é seguro para realizar compras?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Sim, nosso e-commerce utiliza tecnologia de criptografia SSL (Secure Socket Layer) para proteger todas as suas informações pessoais e de pagamento. Seus dados são confidenciais e não são compartilhados.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: Dúvidas Adicionais -->
+        <section class="faq-section">
+            <h2>Dúvidas Adicionais</h2>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Vocês oferecem chás orgânicos ou de origem sustentável?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Sim, temos uma seção dedicada a chás orgânicos e trabalhamos com fornecedores que possuem certificações de sustentabilidade e práticas de comércio justo. Você pode filtrar os produtos por essas categorias em nossa loja.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Como posso entrar em contato com o suporte ao cliente?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Nossa equipe de suporte está disponível de segunda a sexta-feira, das 9h às 18h (Horário de Brasília). Você pode nos contatar por:</p>
+                    <ul>
+                        <li><strong>E-mail:</strong> <a href="contato@chacal.com.br">seuemail@ecommerce.com.br</a></li>
+                        <li><strong>Telefone/WhatsApp:</strong> (11) 954552-7227</li>
+
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 E-commerce de Chás. Todos os direitos reservados.</p>
+        <p>Agradecemos a preferência e desejamos ótimas degustações!</p>
+        <div class="contact-info">
+            <p>Dúvidas? <a href="contato@chacal.com.br">Entre em contato conosco</a></p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            faqItem.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

@@ -98,7 +98,8 @@ if ($method === 'POST') {
         if (!$email || !$password) {
             json_response(['success' => false, 'error' => 'Email e senha são obrigatórios'], 400);
         }
-        
+
+
         // Buscar usuário
         if ($conn instanceof mysqli) {
             $stmt = $conn->prepare("SELECT id, name, email, password FROM users WHERE email = ?");

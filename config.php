@@ -1,15 +1,5 @@
 <?php
-/**
- * Configuração do Banco de Dados MySQL
- * Altere os valores abaixo com suas credenciais
- */
-
-// Configurações de Conexão MySQL
-/*define('DB_HOST', 'localhost');      // Host do MySQL (geralmente localhost)
-define('DB_USER', 'root');           // Usuário do MySQL (padrão: root)
-define('DB_PORT', '3306');          // Porta do MySQL (padrão: 3306)
-define('DB_PASS', '12345678');               // Senha do MySQL (deixe vazio se não tiver)
-define('DB_NAME', 'chacal_db');    */  // Nome do banco de dados
+/* Configuração do Banco de Dados MySQL */
 
 $host = "localhost";
 $usuario = "root";

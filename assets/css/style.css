@@ -4,6 +4,14 @@
     box-sizing: border-box;
 }
 
+.admin-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 1rem;
+    font-size: 30px;
+}
+
 :root {
     --primary-color: #8B4513;
     --primary-dark: #6B3410;

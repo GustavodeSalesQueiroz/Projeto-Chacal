@@ -31,6 +31,17 @@ class User {
     }
 }
 
+
+//checar se o usuário é admin caso não esconder o ícone
+document.addEventListener('DOMContentLoaded', () => {
+    const isAdminLink = document.getElementById('isAdmin');
+    if (isAdminLink) {
+        if (!user.isLoggedIn() || !user.data.is_admin) {
+            isAdminLink.style.display = 'none';
+        }
+    }
+});
+
 const user = new User();
 
 // Funções auxiliares
@@ -129,6 +140,8 @@ class Cart {
 }
 
 const cart = new Cart();
+
+
 
 // Atualizar header com informações do usuário
 function updateUserHeader() {

@@ -14,6 +14,7 @@ if (!$conn) {
 $method = $_SERVER['REQUEST_METHOD'];
 $action = isset($_GET['action']) ? sanitize($_GET['action']) : '';
 
+
 if ($method === 'POST') {
     $data = json_decode(file_get_contents('php://input'), true);
     
@@ -23,6 +24,7 @@ if ($method === 'POST') {
         $email = isset($data['email']) ? sanitize($data['email']) : '';
         $password = isset($data['password']) ? $data['password'] : '';
         $confirmPassword = isset($data['confirmPassword']) ? $data['confirmPassword'] : '';
+        
         
         // Validações
         if (!$name || !$email || !$password) {
@@ -64,7 +66,7 @@ if ($method === 'POST') {
         
         // Inserir usuário
         if ($conn instanceof mysqli) {
-            $insert_stmt = $conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
+            $insert_stmt = $conn->prepare("INSERT INTO users (name, email, password, type_user) VALUES (?, ?, ?, 'user')");
             $insert_stmt->bind_param("sss", $name, $email, $hashedPassword);
             $success = $insert_stmt->execute();
             $user_id = $conn->insert_id;
@@ -98,6 +100,7 @@ if ($method === 'POST') {
         if (!$email || !$password) {
             json_response(['success' => false, 'error' => 'Email e senha são obrigatórios'], 400);
         }
+        
         
         // Buscar usuário
         if ($conn instanceof mysqli) {
@@ -142,4 +145,26 @@ elseif ($method === 'GET') {
 else {
     json_response(['success' => false, 'error' => 'Método não permitido'], 405);
 }
+
+    
+//verificar se o usuário é admin
+function isAdmin($userId) {
+    global $conn;
+    
+    if ($conn instanceof mysqli) {
+        $stmt = $conn->prepare("SELECT type_user FROM users WHERE id = ?");
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $user = $result->fetch_assoc();
+        $stmt->close();
+    } else {
+        $stmt = $conn->prepare("SELECT type_user FROM users WHERE id = ?");
+        $stmt->execute([$userId]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    
+    return $user && isset($user['type_user']) && $user['type_user'] === 'admin';
+}
+
 ?>

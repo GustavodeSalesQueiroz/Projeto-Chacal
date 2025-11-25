@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Pedidos - Chacal</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="..icon/favicon-16x16.png">
+    <link rel="manifest" href="icon/site.webmanifest">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1 href="index.html">🍵 Chacal</h1>
+            </div>
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <a href="products.html">Produtos</a>
+            </nav>
+            <div class="header-actions">
+                <a href="cart.html" class="cart-icon">
+                    🛒
+                    <span class="cart-count" style="display: none;">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="orders-container">
+            <div class="orders-header">
+                <h1>📦 Meus Pedidos</h1>
+                <div class="user-info">
+                    <span id="userName">Usuário</span>
+                    <button id="logoutBtn" class="btn btn-secondary" style="margin-left: 1rem;">Sair</button>
+                </div>
+            </div>
+
+            <!-- Loading -->
+            <div id="loadingOrders" class="loading" style="display: none;">
+                <p>Carregando pedidos...</p>
+            </div>
+
+            <!-- No Orders -->
+            <div id="noOrders" class="no-orders" style="display: none;">
+                <div class="empty-state">
+                    <p>📭 Você ainda não fez nenhum pedido</p>
+                    <a href="products.html" class="btn btn-primary">Começar a Comprar</a>
+                </div>
+            </div>
+
+            <!-- Orders List -->
+            <div id="ordersList" class="orders-list"></div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer3">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sobre Chacal</h3>
+                    <p>Oferecemos os melhores chás premium do mundo.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p>Email: contato@chacal.com</p>
+                    <p>Telefone: (11) 9999-9999</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Chacal. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/app.js"></script>
+    <script>
+        // Verificar se o usuário está logado
+        function checkLogin() {
+            const userData = localStorage.getItem('user');
+            if (!userData) {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            const user = JSON.parse(userData);
+            document.getElementById('userName').textContent = user.name || 'Usuário';
+            
+            loadOrders(user.id);
+        }
+
+        // Carregar pedidos do usuário
+        async function loadOrders(userId) {
+            const loadingDiv = document.getElementById('loadingOrders');
+            const noOrdersDiv = document.getElementById('noOrders');
+            const ordersListDiv = document.getElementById('ordersList');
+            
+            loadingDiv.style.display = 'block';
+            ordersListDiv.innerHTML = '';
+            noOrdersDiv.style.display = 'none';
+            
+            try {
+                const response = await fetch(`/api/orders.php?action=list&user_id=${userId}`);
+                const data = await response.json();
+                
+                loadingDiv.style.display = 'none';
+                
+                if (data.success && data.orders && data.orders.length > 0) {
+                    displayOrders(data.orders);
+                } else {
+                    noOrdersDiv.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Erro ao carregar pedidos:', error);
+                loadingDiv.style.display = 'none';
+                noOrdersDiv.style.display = 'block';
+            }
+        }
+
+        // Exibir pedidos na tela
+        function displayOrders(orders) {
+            const ordersListDiv = document.getElementById('ordersList');
+            
+            ordersListDiv.innerHTML = orders.map(order => `
+                <div class="order-card">
+                    <div class="order-header">
+                        <div class="order-info">
+                            <h3>Pedido #${order.id}</h3>
+                            <p class="order-date">${new Date(order.created_at).toLocaleDateString('pt-BR')}</p>
+                        </div>
+                        <div class="order-status status-${order.status}">
+                            ${getStatusLabel(order.status)}
+                        </div>
+                    </div>
+                    
+                    <div class="order-items">
+                        <h4>Itens do Pedido:</h4>
+                        <div class="items-list">
+                            ${JSON.parse(order.items || '[]').map(item => `
+                                <div class="item-row">
+                                    <span>${item.name}</span>
+                                    <span>${item.quantity}x</span>
+                                    <span>R$ ${(item.price / 100).toFixed(2)}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <div class="order-footer">
+                        <div class="order-total">
+                            <strong>Total:</strong>
+                            <strong>R$ ${(order.total_price / 100).toFixed(2)}</strong>
+                        </div>
+                        <div class="order-address">
+                            <p><strong>Endereço de Entrega:</strong></p>
+                            <p>${order.shipping_address || 'Não informado'}</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Obter label do status
+        function getStatusLabel(status) {
+            const labels = {
+                'pending': '⏳ Pendente',
+                'processing': '🔄 Processando',
+                'shipped': '📦 Enviado',
+                'delivered': '✅ Entregue',
+                'cancelled': '❌ Cancelado'
+            };
+            return labels[status] || status;
+        }
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            localStorage.removeItem('user');
+            window.location.href = '/public/login.html';
+        });
+
+        // Carregar ao iniciar
+        document.addEventListener('DOMContentLoaded', checkLogin);
+    </script>
+</body>
+</html>

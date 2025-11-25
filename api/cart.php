@@ -4,11 +4,23 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
 
+rror_reporting(0);
+ini_set('display_errors', 0);
+
 require_once '../config.php';
+
+// Verificar conexão
+if (!$conn) {
+    json_response(['success' => false, 'error' => 'Erro ao conectar ao banco de dados'], 500);
+}
 
 $method = $_SERVER['REQUEST_METHOD'];
 $action = isset($_GET['action']) ? sanitize($_GET['action']) : '';
-$user_id = 1; // Usuário padrão para demonstração
+
+if ($method === 'OPTIONS') {
+    http_response_code(200);
+    exit;
+}
 
 if ($method === 'GET') {
     if ($action === 'list') {

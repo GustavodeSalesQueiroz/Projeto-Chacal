@@ -1,15 +1,12 @@
--- =====================================================
--- CHACAL E-COMMERCE - Script de Criação do Banco
--- =====================================================
+
+-- CHACAL E-COMMERCE - Script de Criação do Banco de Dados MySQL
 -- Copie e execute este script no MySQL Workbench
 
 -- Criar banco de dados
 CREATE DATABASE IF NOT EXISTS chacal_db;
 USE chacal_db;
 
--- =====================================================
 -- Tabela de Categorias
--- =====================================================
 CREATE TABLE IF NOT EXISTS categories (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -20,9 +17,7 @@ CREATE TABLE IF NOT EXISTS categories (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- =====================================================
 -- Tabela de Produtos
--- =====================================================
 CREATE TABLE IF NOT EXISTS products (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(150) NOT NULL,
@@ -40,9 +35,7 @@ CREATE TABLE IF NOT EXISTS products (
     INDEX idx_featured (featured)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- =====================================================
 -- Tabela de Usuários
--- =====================================================
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(150),
@@ -53,9 +46,8 @@ CREATE TABLE IF NOT EXISTS users (
     INDEX idx_email (email)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- =====================================================
 -- Tabela de Itens do Carrinho
--- =====================================================
+
 CREATE TABLE IF NOT EXISTS cart_items (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
@@ -69,9 +61,8 @@ CREATE TABLE IF NOT EXISTS cart_items (
     UNIQUE KEY unique_user_product (user_id, product_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- =====================================================
 -- Tabela de Pedidos
--- =====================================================
+
 CREATE TABLE IF NOT EXISTS orders (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
@@ -88,9 +79,7 @@ CREATE TABLE IF NOT EXISTS orders (
     INDEX idx_status (status)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- =====================================================
 -- Tabela de Itens do Pedido
--- =====================================================
 CREATE TABLE IF NOT EXISTS order_items (
     id INT AUTO_INCREMENT PRIMARY KEY,
     order_id INT NOT NULL,
@@ -103,9 +92,8 @@ CREATE TABLE IF NOT EXISTS order_items (
     INDEX idx_order (order_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- =====================================================
+
 -- INSERIR CATEGORIAS
--- =====================================================
 INSERT INTO categories (name, description, slug, image) VALUES
 ('Chás Verdes', 'Chás verdes frescos e revitalizantes', 'cha-verde', 'https://imgs.search.brave.com/93RZxUIMV3SIBA_kJS3pTvDalyfzHUNR4EZSj7Bryc8/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTg0/OTQ4Nzk3L3B0L2Zv/dG8vY2glQzMlQTEt/dmVyZGUuanBnP3M9/NjEyeDYxMiZ3PTAm/az0yMCZjPTZzQkZY/WkNfd2lVTHlNZ3lC/OFZsdDlreEw0ZUp6/Q2d4ZE9JLTVENGdr/bDA9'),
 ('Chás Pretos', 'Chás pretos robustos e encorpados', 'cha-preto', 'https://image.tuasaude.com/media/article/rv/dc/beneficios-do-cha-preto_32416.jpg?width=468&height=312&mode=crop&anchor=middlecenter'),
@@ -113,9 +101,9 @@ INSERT INTO categories (name, description, slug, image) VALUES
 ('Chás Oolong', 'Chás oolong com sabor único e complexo', 'cha-oolong', 'https://imgs.search.brave.com/d0IvVKnuKtS9bxC8f1aMqlePQuOKuR3Gt0zf_cMAztg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/b2FudGFnb25pc3Rh/LmNvbS91cGxvYWRz/LzIwMjQvMTEvQ2hh/LU9vbG9uZ18xNzMy/NTk2MjIwNDM4LTEw/MjR4NTc2LmpwZw'),
 ('Chás de Ervas', 'Chás de ervas naturais e aromáticos', 'cha-ervas', 'https://imgs.search.brave.com/SK_8U72cgsl18baaQcaNGsUDcoUJ4djLeZRRhtMqXHk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jYXNh/LmFicmlsLmNvbS5i/ci93cC1jb250ZW50/L3VwbG9hZHMvMjAy/MS8wNi8xOS1lcnZh/cy1wYXJhLXBsYW50/YXItZS1mYXplci1j/aGElQ0MlODFzLWlz/dG9jay0xOC5wbmc_/dz03NzU');
 
--- =====================================================
+
 -- INSERIR PRODUTOS
--- =====================================================
+
 INSERT INTO products (name, description, price, category_id, image, stock, slug, featured) VALUES
 -- Chás Verdes (category_id = 1)
 ('Matcha Premium', 'Pó de chá verde matcha de alta qualidade, perfeito para cerimônias', 4500, 1, 'https://imgs.search.brave.com/fX6SgDziC2nqnqsoaCGF1ra5s43t18z0_59UVuBTsSE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zMi1v/Z2xvYm8uZ2xiaW1n/LmNvbS94V2luOUNT/Y2cwZmQzeXlleEww/eEw1Mk5TdGs9LzB4/MDo2MjQweDQxNjAv/ODg4eDAvc21hcnQv/ZmlsdGVyczpzdHJp/cF9pY2MoKS9pLnMz/LmdsYmltZy5jb20v/djEvQVVUSF9kYTAy/NTQ3NGMwYzQ0ZWRk/OTkzMzJkZGRiMDlj/YWJlOC9pbnRlcm5h/bF9waG90b3MvYnMv/MjAyMy90L1gvUldM/VmIwVEIyOFRPTUVi/clJDaHcvZ3JlZW4t/cGFuY2FrZXMtd2l0/aC1tYXRjaGEtcG93/ZGVyLXdpdGgtcmVk/LWphbS10b3Atdmll/dy0xLS5qcGc', 50, 'matcha-premium', 1),
@@ -140,6 +128,4 @@ INSERT INTO products (name, description, price, category_id, image, stock, slug,
 ('Menta Fresca', 'Chá de menta refrescante e natural', 1800, 5, 'https://imgs.search.brave.com/WSl3E8BVtfEJhMvWemYQYD6mvUovOwU11hRBikRs3_I/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wMi50/cnJzZi5jb20vaW1h/Z2UvZmdldC9jZi83/NzQvMC9pbWFnZXMu/dGVycmEuY29tLzIw/MjMvMDcvMjYvMTY5/MDc4NjU5OC1tZW50/YS1wcm9wcmllZGFk/ZXMtZG8tY2hhLXJl/ZnJlc2NhbnRlLXZh/by1hbGVtLWRhcy1k/aWdlc3RpdmFzLmpw/Zw', 80, 'menta-fresca', 0),
 ('Gengibre e Limão', 'Blend aquecedor com gengibre e limão', 2500, 5, 'https://imgs.search.brave.com/6Uofw7Fkfyh_JmskaH61ju75_gEY-AW5VJDCGaBtVPs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMuaXRkZy5jb20u/YnIvaW1hZ2VzLzY0/MC1hdXRvLzBlN2Vk/MjRlNThiYTBhNjlj/ZWFlYjc1NTAxNWY0/ZDJiL3NodXR0ZXJz/dG9jay0zMDAyODY5/NDAtMS0uanBn', 55, 'gengibre-limao', 0);
 
--- =====================================================
--- Pronto! Banco de dados criado com sucesso
--- =====================================================
+

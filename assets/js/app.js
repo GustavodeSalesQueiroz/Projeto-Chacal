@@ -141,7 +141,7 @@ function updateUserHeader() {
         userMenu.style.cssText = 'display: flex; align-items: center; gap: 1rem;';
         userMenu.innerHTML = `
             <span style="color: var(--primary-color); font-weight: 500;">👤 ${user.getName()}</span>
-            <a href="/public/orders.html" style="color: var(--primary-color); text-decoration: none; font-weight: 500;">Pedidos</a>
+            <a href="/public/pedidos.html" style="color: var(--primary-color); text-decoration: none; font-weight: 500;">Pedidos</a>
             <button onclick="logoutUser()" style="background: none; border: none; color: var(--primary-color); cursor: pointer; font-weight: 500;">Sair</button>
         `;
         headerActions.innerHTML = '';
@@ -149,7 +149,7 @@ function updateUserHeader() {
     } else {
         // Usuário não logado
         const loginLink = document.createElement('a');
-        loginLink.href = 'login.html';
+        loginLink.href = '/public/login.html';
         loginLink.style.cssText = 'color: var(--primary-color); text-decoration: none; font-weight: 500;';
         loginLink.textContent = 'Login';
         headerActions.innerHTML = '';
@@ -158,7 +158,7 @@ function updateUserHeader() {
 
     // Adicionar carrinho
     const cartIcon = document.createElement('a');
-    cartIcon.href = 'cart.html';
+    cartIcon.href = '/public/cart.html';
     cartIcon.className = 'cart-icon';
     cartIcon.innerHTML = `
         🛒
@@ -193,7 +193,16 @@ async function fetchAPI(endpoint, options = {}) {
             ...options
         });
 
-        const data = await response.json();
+        let data;
+        const contentType = response.headers.get('content-type');
+        
+        if (contentType && contentType.includes('application/json')) {
+            data = await response.json();
+        } else {
+            const text = await response.text();
+            console.error('Não é JSON:', text);
+            throw new Error('Resposta inválida do servidor');
+        }
 
         if (!response.ok) {
             throw new Error(data.error || 'Erro na requisição');
@@ -202,7 +211,7 @@ async function fetchAPI(endpoint, options = {}) {
         return data;
     } catch (error) {
         console.error('API Error:', error);
-        showError(error.message);
+        showError(error.message || 'Erro ao conectar com o servidor');
         throw error;
     }
 }
@@ -282,7 +291,7 @@ function renderProducts(products, container) {
         `;
         
         card.addEventListener('click', () => {
-            window.location.href = `product.html?slug=${product.slug}`;
+            window.location.href = `/public/product.html?slug=${product.slug}`;
         });
 
         container.appendChild(card);
@@ -393,13 +402,27 @@ async function submitCheckout(event) {
 
     const totalPrice = cart.getTotal() + (cart.getTotal() > 0 ? 1500 : 0);
 
+    // Validar se há itens no carrinho
+    if (cart.items.length === 0) {
+        showError('Seu carrinho está vazio');
+        return;
+    }
+
+    // Validar se o preço total é válido
+    if (totalPrice <= 0) {
+        showError('Preço total inválido');
+        return;
+    }
+
     try {
         const data = await fetchAPI(`/orders.php?action=create`, {
             method: 'POST',
             body: JSON.stringify({
+                user_id: user.data.id,
                 total_price: totalPrice,
                 shipping_address: shippingAddress,
-                billing_address: billingAddress
+                billing_address: billingAddress,
+                items: cart.items
             })
         });
 

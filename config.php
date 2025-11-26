@@ -4,7 +4,7 @@
 $host = "localhost";
 $usuario = "root";
 $senha = "12345678"; // senha em branco
-$banco = "chacal_db";
+$banco = "aromaesabor_db";
 $porta = 3306;
 
 $conn = null; // Inicializa a conexão como nula
@@ -27,7 +27,7 @@ try {
         if (!$conn->query($sql)) {
             // Se houver erro ao criar o DB, a conexão é invalidada
             // error_log('Erro ao criar banco de dados: ' . $conn->error);
-            $conn = null;
+            $conn = null;   
         } else {
             // Selecionar banco de dados e definir charset
             $conn->select_db($banco);

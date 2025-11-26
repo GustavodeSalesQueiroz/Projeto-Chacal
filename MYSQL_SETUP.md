@@ -40,8 +40,8 @@
 Após executar o script, você deve ver:
 
 ```
-CREATE DATABASE IF NOT EXISTS chacal_db - OK
-USE chacal_db - OK
+CREATE DATABASE IF NOT EXISTS aromaesabor_db - OK
+USE aromaesabor_db - OK
 CREATE TABLE categories - OK
 CREATE TABLE products - OK
 CREATE TABLE users - OK
@@ -59,22 +59,22 @@ INSERT INTO products - OK (13 rows affected)
 Abra o arquivo `config.php` e ajuste se necessário:
 
 ```php
-define('DB_HOST', 'localhost');      // Host do MySQL
-define('DB_USER', 'root');           // Seu usuário
-define('DB_PASS', '');               // Sua senha
-define('DB_NAME', 'chacal_db');      // Nome do banco
+$DB_HOST, 'localhost';      // Host do MySQL
+$DB_USER, 'root';           // Seu usuário
+$DB_PASS, '';               // Sua senha
+$DB_NAME, 'aromaesabor_db';      // Nome do banco
 ```
 
 **Exemplos:**
 
 Se você tem senha:
 ```php
-define('DB_PASS', 'sua_senha_aqui');
+$DB_PASS, 'sua_senha_aqui');
 ```
 
 Se usa porta diferente:
 ```php
-define('DB_HOST', 'localhost:3307');
+$DB_HOST, 'localhost:3307');
 ```
 
 ---
@@ -120,7 +120,7 @@ DROP DATABASE IF EXISTS chacal_db;
 ## 📝 Estrutura do Banco
 
 ```
-chacal_db/
+aromaesabor_db/
 ├── categories
 │   ├── id (INT, PK)
 │   ├── name (VARCHAR)
@@ -166,14 +166,7 @@ chacal_db/
 │   ├── tracking_number (VARCHAR)
 │   └── timestamps
 │
-└── order_items
-    ├── id (INT, PK)
-    ├── order_id (INT, FK)
-    ├── product_id (INT, FK)
-    ├── quantity (INT)
-    ├── price_at_purchase (INT)
-    └── created_at
-```
+└── 
 
 ---
 
@@ -192,11 +185,11 @@ chacal_db/
 - Verifique a senha em `config.php`
 - Verifique se MySQL Server está rodando
 
-### "Unknown database 'chacal_db'"
+### "Unknown database 'aromaesabor_db'"
 - Execute o script `database.sql` novamente
 - Verifique se não há erros na execução
 
-### "Table 'chacal_db.products' doesn't exist"
+### "Table 'aromaesabor_db.products' doesn't exist"
 - Verifique se o script foi executado completamente
 - Procure por mensagens de erro no Workbench
 
@@ -206,4 +199,3 @@ chacal_db/
 
 ---
 
-**Pronto! Seu banco de dados está configurado!** 🎉

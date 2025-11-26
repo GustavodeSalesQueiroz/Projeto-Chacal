@@ -47,7 +47,6 @@ CREATE TABLE products - OK
 CREATE TABLE users - OK
 CREATE TABLE cart_items - OK
 CREATE TABLE orders - OK
-CREATE TABLE order_items - OK
 INSERT INTO categories - OK (5 rows affected)
 INSERT INTO products - OK (13 rows affected)
 ```

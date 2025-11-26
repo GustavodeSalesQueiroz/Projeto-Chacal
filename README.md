@@ -229,14 +229,6 @@ Se a porta 8000 estiver em uso:
 ```bash
 php -S localhost:8001
 ```
-
-### Criar usuário admin
-
-Execute no MySQL:
-```sql
-UPDATE users SET type_user = 'admin' WHERE id = 1;
-```
-
 ---
 
 
